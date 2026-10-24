@@ -1,0 +1,24 @@
+Bài 20: D latch
+Module: dlatch
+
+1. Overview
+D latch.
+
+2. Scope
+Latch nhạy mức en, reset bất đồng bộ mức cao.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+d,en,rst: input 1 bit.
+q: output 1 bit.
+
+Quy tắc hoạt động:
+Ưu tiên rst > en. rst=1 đặt q=0; rst=0,en=1 cho q theo d; en=0 giữ q.
+
+4. Dataflow
+d đi qua latch điều khiển bởi en tới q; rst xóa q độc lập en.
+
+5. Test plan
+- Thay đổi d khi en mở và khi en đóng.
+- Assert reset khi en đóng và khi en mở.

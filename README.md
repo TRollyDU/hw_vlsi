@@ -1,19 +1,25 @@
 # 35 bài tập thiết kế số bằng Verilog
 
-Repository này gồm **35 thư mục bài tập đã tạo sẵn**, tương ứng với 35 mục trong danh sách A–E. Mỗi người chọn bài và nộp/cập nhật đúng thư mục bằng **2 file**:
+Repository này gồm **35 bài tập Verilog**, tương ứng với 35 mục trong danh sách A–E. Mỗi thư mục bài có **3 file**:
 
 - `spec.txt` — mô tả yêu cầu, ngõ vào/ngõ ra, chức năng, giả định và các trường hợp kiểm tra.
 - `<ten_bai>.v` — mã nguồn Verilog, với `<ten_bai>` trùng **phần tên sau số thứ tự của thư mục**.
+- `tb_<ten_bai>.v` — testbench tự kiểm tra, in PASS/FAIL cho mỗi phép kiểm tra và tổng số ở cuối.
 
 **Ví dụ:** bài `02_mux4_8b/` sau khi nộp sẽ có:
 
 ```text
 02_mux4_8b/
 ├── spec.txt
-└── mux4_8b.v
+├── mux4_8b.v
+└── tb_mux4_8b.v
 ```
 
-> **Quan trọng:** Các thư mục hiện chứa `.gitkeep` để GitHub hiển thị thư mục rỗng. Khi nộp 2 file, **xóa `.gitkeep`** trong thư mục đó. **Không tạo thêm thư mục con**; không đổi tên các thư mục đã có.
+> **Quan trọng:** Mỗi thư mục bài chỉ giữ 3 file trên, không giữ `.gitkeep`, waveform hay file build. Không đổi tên các thư mục đã có.
+
+RTL dùng Verilog-2001. Quy ước I/O, clock/reset, parameter và test plan được ghi trong `spec.txt` từng bài. Testbench dài 22–41 dòng; với mạch dùng clock, dữ liệu được đổi trước cạnh lấy mẫu và kiểm tra sau khi RTL cập nhật. Bài 33 dùng đúng hai trạng thái đỏ/xanh, đổi theo `tick`.
+
+Đợt mô phỏng dùng Vivado xsim chỉ chạy bài 27–35; bài 1–26 có testbench nhưng không chạy mô phỏng. Bài 29–30 dùng parameter nhỏ trong testbench để rút ngắn thời gian. Mặc định bài 30 vẫn tạo một tick mỗi 50.000.000 chu kỳ clock.
 
 📘 **Đọc [HUONG_DAN.md](HUONG_DAN.md) trước khi đóng góp** — có hướng dẫn từng bước cho người mới bằng giao diện GitHub và Git Bash, kể cả `add`, `commit`, `push`, Pull Request.
 
@@ -82,11 +88,11 @@ Repository này gồm **35 thư mục bài tập đã tạo sẵn**, tương ứ
 ## Quy tắc đóng góp
 
 1. Chọn **đúng thư mục** theo số bài; tuyệt đối không sửa bài khác trong cùng Pull Request.
-2. Trong thư mục bài đã hoàn thành, chỉ giữ **`spec.txt` và `<ten_bai>.v`**.
+2. Trong thư mục bài đã hoàn thành, chỉ giữ **`spec.txt`, `<ten_bai>.v` và `tb_<ten_bai>.v`**.
 3. Viết mã bằng **Verilog** (`.v`), ưu tiên RTL có thể tổng hợp, không đưa waveform, file build hay file mô phỏng lên repository.
-4. `spec.txt` cần mô tả rõ cổng vào/ra, độ rộng bit, bảng chức năng/điều kiện hoạt động, clock/reset nếu có; xem [mẫu SPEC](templates/spec_template.txt).
+4. `spec.txt` gồm Overview, Scope, Functional spec (I/O và Blocks nếu có nhiều khối), Dataflow, Test plan. Test plan chỉ nêu ca kiểm tra, không ghi expected; xem [mẫu SPEC](templates/spec_template.txt).
 5. Mỗi bài nên được nộp trong **một branch riêng và một Pull Request**, để dễ kiểm tra và duyệt.
-6. Nếu người khác đã hoàn thành bài, hãy cập nhật đúng hai file đó trên branch mới và giải thích thay đổi trong Pull Request; không ghi đè mà không xem bản mới nhất.
+6. Nếu người khác đã hoàn thành bài, hãy cập nhật đúng ba file đó trên branch mới và giải thích thay đổi trong Pull Request; không ghi đè mà không xem bản mới nhất.
 
 ### Người quản lý repo
 

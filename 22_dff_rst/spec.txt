@@ -1,0 +1,31 @@
+Bài 22: D flip-flop reset đồng bộ và bất đồng bộ
+Module: dff_rst
+
+1. Overview
+D flip-flop reset đồng bộ và bất đồng bộ.
+
+2. Scope
+Hai flip-flop độc lập cùng nhận d,clk,rst; reset mức cao, cạnh lên clk.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+Blocks:
+- Flip-flop reset đồng bộ.
+- Flip-flop reset bất đồng bộ.
+
+I/O pins:
+clk,rst,d: input 1 bit.
+q_sync,q_async: output 1 bit.
+
+Quy tắc hoạt động:
+q_sync: tại cạnh lên clk, rst=1 xóa q_sync, rst=0 lấy d.
+q_async: rst=1 xóa ngay; khi rst=0, tại cạnh lên clk lấy d.
+q_sync chưa xác định trước cạnh clock đầu tiên nếu chưa được nạp/reset.
+
+4. Dataflow
+d cấp cho hai flip-flop song song; đường reset đồng bộ đi vào lựa chọn D, đường reset bất đồng bộ xóa trực tiếp.
+
+5. Test plan
+- Assert reset giữa hai cạnh clock.
+- Lấy mẫu d=0/1 khi bỏ reset.
+- Giữ reset qua cạnh lên và thay đổi d giữa hai cạnh.

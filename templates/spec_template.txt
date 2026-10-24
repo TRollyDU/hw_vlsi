@@ -1,17 +1,19 @@
-Ten bai:
-Ten module:
-Nguoi thuc hien (tuy chon):
+Bài:
+Module:
 
-1. Muc tieu / Chuc nang:
+1. Overview
+Mục đích của khối.
 
-2. Input (ten / do rong bit / y nghia):
+2. Scope
+Phạm vi, độ rộng, miền dữ liệu, giới hạn và giả định.
 
-3. Output (ten / do rong bit / y nghia):
+3. Functional spec
+Blocks: chỉ liệt kê khi có nhiều khối chức năng.
+I/O pins: tên, hướng, độ rộng và ý nghĩa.
+Quy tắc hoạt động, clock/reset/enable, thứ tự ưu tiên, parameter và giá trị biên.
 
-4. Bang chuc nang / Quy tac xu ly:
+4. Dataflow
+Đường đi của dữ liệu từ đầu vào qua logic/thanh ghi tới đầu ra.
 
-5. Clock / Reset / Enable (neu co):
-
-6. Gia dinh va truong hop bien:
-
-7. Cac test case da kiem tra:
+5. Test plan
+Chỉ liệt kê các test, không ghi expected.

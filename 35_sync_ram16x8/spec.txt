@@ -1,0 +1,31 @@
+Bài 35: RAM đồng bộ 16 x 8 bit
+Module: sync_ram16x8
+
+1. Overview
+RAM đồng bộ 16 x 8 bit.
+
+2. Scope
+RAM một cổng 16 từ x 8 bit; cạnh lên clk; không reset hay khởi tạo bộ nhớ.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,en,we: input 1 bit, cho phép cổng và cho phép ghi.
+addr: input [3:0], địa chỉ 0..15.
+din: input [7:0], dữ liệu ghi.
+dout: output [7:0], dữ liệu đọc được đăng ký.
+
+Quy tắc hoạt động:
+Tại cạnh lên nếu en=1,we=1: ghi mem[addr]=din và dout=din (write-first).
+Nếu en=1,we=0: dout=mem[addr]. Nếu en=0: giữ dout và không ghi.
+Thay đổi addr giữa hai cạnh không làm thay đổi dout.
+mem và dout chưa xác định trước khi được ghi/đọc hợp lệ; không đọc ô chưa ghi.
+
+4. Dataflow
+addr chọn ô nhớ; en,we điều khiển ghi din. Mux write-first chọn din hoặc dữ liệu ô nhớ để chốt vào dout.
+
+5. Test plan
+- Ghi và đọc lại đủ 16 địa chỉ bằng mẫu phụ thuộc địa chỉ.
+- Ghi đè địa chỉ đã dùng.
+- Đổi địa chỉ giữa hai cạnh clock.
+- Thử en=0 với we=1 và kiểm tra dữ liệu sau đó.

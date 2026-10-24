@@ -1,0 +1,27 @@
+Bài 16: Bộ cộng/trừ 4 bit
+Module: addsub4
+
+1. Overview
+Bộ cộng/trừ 4 bit.
+
+2. Scope
+Tổ hợp, phép cộng/trừ không dấu, không carry-in ngoài.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+a,b: input [3:0].
+sub: input 1 bit, 0 cộng, 1 trừ.
+result: output [3:0].
+carry_borrow: output 1 bit.
+
+Quy tắc hoạt động:
+sub=0: result=(a+b) modulo 16, carry_borrow là carry-out.
+sub=1: result=(a-b) modulo 16, carry_borrow=1 khi a<b (có mượn).
+Không có cờ overflow có dấu.
+
+4. Dataflow
+sub chọn cộng hoặc trừ trên toán hạng mở rộng 5 bit; tách kết quả và cờ.
+
+5. Test plan
+- Duyệt đủ 512 tổ hợp a,b,sub, gồm các biên carry/borrow.

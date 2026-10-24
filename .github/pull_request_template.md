@@ -8,6 +8,6 @@
 
 - [ ] Tôi chỉ sửa **một** thư mục bài tập.
 - [ ] Có `spec.txt` mô tả đầy đủ yêu cầu, input/output.
-- [ ] Có đúng 1 file Verilog `.v`, tên trùng thư mục sau phần `NN_`.
+- [ ] Có RTL `<ten_bai>.v` và testbench `tb_<ten_bai>.v`, tên bài trùng phần sau `NN_`.
 - [ ] Tôi đã xóa `.gitkeep` ở bài đã hoàn thành.
 - [ ] Tôi đã tự kiểm tra tên module, cú pháp và các trường hợp chính.

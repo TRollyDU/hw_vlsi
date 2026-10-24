@@ -1,0 +1,29 @@
+Bài 19: ALU 4 bit
+Module: alu4
+
+1. Overview
+ALU 4 bit.
+
+2. Scope
+Tám phép toán tổ hợp trên số không dấu; dịch logic cố định 1 bit.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+a,b: input [3:0].
+op: input [2:0], mã phép toán.
+y: output [3:0].
+carry_borrow,zero: output 1 bit.
+
+Quy tắc hoạt động:
+op=000: a+b; 001: a-b; 010: a AND b; 011: a OR b;
+100: a XOR b; 101: NOT a; 110: a<<1; 111: a>>1.
+Phép toán chỉ giữ 4 bit kết quả. carry_borrow là carry ở phép cộng,
+borrow ở phép trừ; bằng 0 ở phép logic và dịch. zero=(y==0).
+
+4. Dataflow
+op chọn kết quả số học/logic/dịch từ a,b; kết quả y qua bộ so sánh 0 tạo zero.
+
+5. Test plan
+- Thử cả 8 opcode trên các cặp 0/0, 15/1, 5/10, 8/8.
+- Kiểm tra cờ zero và carry/borrow cùng dữ liệu.

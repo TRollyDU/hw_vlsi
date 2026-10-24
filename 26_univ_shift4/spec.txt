@@ -1,0 +1,30 @@
+Bài 26: Thanh ghi dịch đa năng 4 bit
+Module: univ_shift4
+
+1. Overview
+Thanh ghi dịch đa năng 4 bit.
+
+2. Scope
+Cạnh lên clk, reset bất đồng bộ mức cao.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst: input 1 bit.
+mode: input [1:0].
+d: input [3:0], dữ liệu nạp song song.
+sl,sr: input 1 bit, bit nối tiếp cho dịch trái/phải.
+q: output [3:0].
+
+Quy tắc hoạt động:
+rst=1 xóa q. Khi rst=0 tại cạnh lên: mode=00 giữ;
+01 dịch phải q={sr,q[3:1]}; 10 dịch trái q={q[2:0],sl}; 11 nạp q=d.
+Ưu tiên reset cao hơn mọi mode.
+
+4. Dataflow
+mode chọn đường giữ/dịch phải/dịch trái/nạp vào thanh ghi q.
+
+5. Test plan
+- Nạp hai mẫu khác nhau.
+- Dịch trái/phải với bit nối tiếp 0 và 1.
+- Giữ sau nạp, sau dịch; reset trong chế độ nạp.

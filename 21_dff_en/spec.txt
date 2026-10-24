@@ -1,0 +1,25 @@
+Bài 21: D flip-flop có enable
+Module: dff_en
+
+1. Overview
+D flip-flop có enable.
+
+2. Scope
+Cạnh lên clk, reset bất đồng bộ mức cao.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst,en,d: input 1 bit.
+q: output 1 bit.
+
+Quy tắc hoạt động:
+rst=1 xóa q tức thời. Khi rst=0: tại cạnh lên, en=1 lấy d; en=0 giữ q.
+
+4. Dataflow
+en chọn giữa d và giá trị giữ q trước flip-flop; rst xóa flip-flop.
+
+5. Test plan
+- Reset ngoài cạnh clock.
+- Thử cả en=0/1 với d=0/1.
+- Giữ en=0 qua nhiều cạnh.

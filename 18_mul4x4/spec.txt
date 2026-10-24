@@ -1,0 +1,23 @@
+Bài 18: Bộ nhân 4 x 4 bit
+Module: mul4x4
+
+1. Overview
+Bộ nhân 4 x 4 bit.
+
+2. Scope
+Nhân tổ hợp hai số không dấu, giữ đủ tích 8 bit.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+a,b: input [3:0].
+product: output [7:0].
+
+Quy tắc hoạt động:
+product=a*b; miền tích 0..225.
+
+4. Dataflow
+a,b đi vào bộ nhân tổ hợp tới product.
+
+5. Test plan
+- Duyệt đủ 256 cặp a,b.

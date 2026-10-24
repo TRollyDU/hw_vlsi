@@ -1,0 +1,25 @@
+Bài 15: Bộ trừ 4 bit
+Module: sub4
+
+1. Overview
+Bộ trừ 4 bit.
+
+2. Scope
+Trừ tổ hợp hai số không dấu, có borrow-in và borrow-out.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+a,b: input [3:0].
+bin: input 1 bit, mượn vào.
+diff: output [3:0].
+bout: output 1 bit, mượn ra.
+
+Quy tắc hoạt động:
+diff=(a-b-bin) modulo 16. bout=1 khi a < b+bin. Không có cờ overflow có dấu.
+
+4. Dataflow
+Mở rộng a,b thành 5 bit rồi trừ; 4 bit thấp tạo diff, bit 4 tạo bout.
+
+5. Test plan
+- Duyệt đủ 512 tổ hợp a,b,bin, gồm bằng nhau và trừ qua 0.

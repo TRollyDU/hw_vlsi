@@ -1,0 +1,23 @@
+Bài 24: T flip-flop
+Module: tff
+
+1. Overview
+T flip-flop.
+
+2. Scope
+Cạnh lên clk, reset bất đồng bộ mức cao.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst,t: input 1 bit.
+q: output 1 bit.
+
+Quy tắc hoạt động:
+rst=1 xóa q. Tại cạnh lên khi rst=0: t=1 đảo q, t=0 giữ q.
+
+4. Dataflow
+t XOR q tạo giá trị kế tiếp của flip-flop.
+
+5. Test plan
+- Thử giữ, đảo liên tiếp, giữ sau đảo và reset ngoài cạnh clock.

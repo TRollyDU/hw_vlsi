@@ -1,0 +1,28 @@
+Bài 14: Bộ cộng ripple-carry 4 bit
+Module: rca4
+
+1. Overview
+Bộ cộng ripple-carry 4 bit.
+
+2. Scope
+Cộng tổ hợp hai số 4 bit không dấu có carry-in.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+Blocks:
+- Bốn tầng cộng 1 bit, nối tiếp đường carry từ bit 0 tới bit 3.
+
+I/O pins:
+a,b: input [3:0].
+cin: input 1 bit.
+sum: output [3:0].
+cout: output 1 bit.
+
+Quy tắc hoạt động:
+{cout,sum}=a+b+cin. p=a XOR b, g=a AND b; bỏ qua diễn giải tràn số có dấu.
+
+4. Dataflow
+a,b tạo p,g cho từng bit. Carry truyền từ c[0]=cin qua 4 tầng tới cout; p XOR carry tạo sum.
+
+5. Test plan
+- Duyệt đủ 512 tổ hợp a,b,cin, gồm các chuỗi lan truyền carry.

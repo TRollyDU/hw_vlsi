@@ -1,0 +1,24 @@
+Bài 23: JK flip-flop
+Module: jkff
+
+1. Overview
+JK flip-flop.
+
+2. Scope
+Cạnh lên clk, reset bất đồng bộ mức cao.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst,j,k: input 1 bit.
+q: output 1 bit.
+
+Quy tắc hoạt động:
+rst=1 xóa q; nếu không reset, tại cạnh lên: JK=00 giữ, 01 xóa, 10 đặt, 11 đảo q.
+
+4. Dataflow
+j,k,q xác định giá trị kế tiếp; flip-flop chốt tại cạnh lên.
+
+5. Test plan
+- Thử đủ 4 tổ hợp JK trên nhiều giá trị trạng thái.
+- Reset giữa hai cạnh clock.

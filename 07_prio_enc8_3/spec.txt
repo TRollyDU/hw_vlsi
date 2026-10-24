@@ -1,0 +1,24 @@
+Bài 07: Bộ mã hóa ưu tiên 8–3
+Module: prio_enc8_3
+
+1. Overview
+Bộ mã hóa ưu tiên 8–3.
+
+2. Scope
+Tổ hợp, bit chỉ số lớn nhất có ưu tiên cao nhất.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+d: input [7:0].
+code: output [2:0], chỉ số bit được chọn.
+valid: output 1 bit, có ít nhất một bit đầu vào bằng 1.
+
+Quy tắc hoạt động:
+d=0: valid=0, code=0. Nếu d khác 0: valid=1 và code là chỉ số bit 1 cao nhất.
+
+4. Dataflow
+d qua mạng ưu tiên tới code; phép OR các bit d tạo valid.
+
+5. Test plan
+- Duyệt đủ 256 mẫu, gồm đầu vào rỗng, one-hot và nhiều bit cùng bật.

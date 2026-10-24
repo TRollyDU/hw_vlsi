@@ -1,0 +1,32 @@
+Bài 29: Bộ chia tần số
+Module: clk_div
+
+1. Overview
+Bộ chia tần số.
+
+2. Scope
+Clock chia có duty cycle 50%, cạnh lên clock nguồn, reset bất đồng bộ mức cao.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+Blocks:
+- Counter nửa chu kỳ.
+- Flip-flop đảo đầu ra.
+
+I/O pins:
+clk,rst: input 1 bit.
+clk_out: output 1 bit.
+
+Quy tắc hoạt động:
+Parameter integer HALF_PERIOD=2, miền hợp lệ 1..2147483647.
+rst=1 đặt bộ đếm và clk_out về 0. Sau khi bỏ reset, cứ HALF_PERIOD
+cạnh lên clk thì đảo clk_out; f_out=f_clk/(2*HALF_PERIOD).
+Không hỗ trợ hệ số chia lẻ. Counter nội bộ là integer 32 bit.
+
+4. Dataflow
+Counter đếm 0..HALF_PERIOD-1; so sánh cuối chu kỳ tạo điều kiện đảo flip-flop clk_out.
+
+5. Test plan
+- Test HALF_PERIOD=3 và biên HALF_PERIOD=1.
+- Kiểm tra mỗi cạnh clock qua nhiều chu kỳ.
+- Reset giữa một nửa chu kỳ rồi kiểm tra lại pha.

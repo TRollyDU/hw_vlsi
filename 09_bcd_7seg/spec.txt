@@ -1,0 +1,25 @@
+Bài 09: Giải mã BCD sang LED 7 đoạn
+Module: bcd_7seg
+
+1. Overview
+Giải mã BCD sang LED 7 đoạn.
+
+2. Scope
+Tổ hợp, LED active-high; seg[6:0]={a,b,c,d,e,f,g}, không có dấu chấm.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+bcd: input [3:0].
+seg: output [6:0], mức 1 bật đoạn.
+
+Quy tắc hoạt động:
+BCD 0..9 hiển thị chữ số tương ứng. Mã 10..15 tắt mọi đoạn.
+Bảng seg: 0=1111110; 1=0110000; 2=1101101; 3=1111001;
+4=0110011; 5=1011011; 6=1011111; 7=1110000; 8=1111111; 9=1111011.
+
+4. Dataflow
+bcd làm địa chỉ bảng giải mã tới seg.
+
+5. Test plan
+- Duyệt đủ 16 mã, gồm mã BCD hợp lệ và mã ngoài miền.

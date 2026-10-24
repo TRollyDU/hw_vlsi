@@ -1,0 +1,25 @@
+Bài 11: Bộ quay vòng 8 bit
+Module: barrel8
+
+1. Overview
+Bộ quay vòng 8 bit.
+
+2. Scope
+Tổ hợp, quay vòng trái/phải; không phải dịch chèn 0.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+d: input [7:0].
+shamt: input [2:0], số vị trí 0..7.
+right: input 1 bit, 1 quay phải, 0 quay trái.
+y: output [7:0].
+
+Quy tắc hoạt động:
+Quay d theo hướng right và số vị trí shamt; các bit vượt biên quay về đầu kia; shamt=0 giữ d.
+
+4. Dataflow
+d đi qua các phép dịch và OR để đưa các bit quay vòng tới y.
+
+5. Test plan
+- Duyệt đủ 256 dữ liệu, 8 số vị trí và 2 hướng.

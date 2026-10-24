@@ -1,0 +1,35 @@
+Bài 32: FSM phát hiện chuỗi 1011
+Module: fsm_1011
+
+1. Overview
+FSM phát hiện chuỗi 1011.
+
+2. Scope
+Mealy 4 trạng thái prefix, đầu ra detect được đăng ký; cho phép chồng lặp.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+Blocks:
+- Thanh ghi trạng thái prefix.
+- Logic chuyển trạng thái.
+- Thanh ghi xung detect.
+
+I/O pins:
+clk,rst,din: input 1 bit.
+detect: output 1 bit, xung nhận dạng.
+
+Quy tắc hoạt động:
+rst bất đồng bộ mức 1: state=S0, detect=0. Mỗi cạnh lên lấy một bit din.
+detect=1 sau cạnh vừa nhận bit cuối của 1011, kéo dài đến cạnh lên kế tiếp.
+Trạng thái prefix: S0 rỗng, S1 đã nhận 1, S2 đã nhận 10, S3 đã nhận 101.
+Chuyển trạng thái (din=0 / din=1):
+S0 -> S0/S1; S1 -> S2/S1; S2 -> S0/S3; S3 -> S2/S1.
+Ở S3 gặp din=1 phát detect. Chuỗi 1011011 có hai lần nhận dạng.
+
+4. Dataflow
+state và din đi vào logic chuyển prefix; thanh ghi chốt state mới và điều kiện phát hiện; detect không phụ thuộc tổ hợp trực tiếp din.
+
+5. Test plan
+- Chuỗi có 1011 đơn lẻ, 1011011 chồng lặp, tiền tố sai và các bit lặp.
+- Reset giữa tiền tố đang nhận.
+- Kiểm tra detect từng cạnh bằng cửa sổ 4 bit.

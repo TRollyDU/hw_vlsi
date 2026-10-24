@@ -1,0 +1,23 @@
+Bài 12: Bộ cộng bán phần
+Module: half_adder
+
+1. Overview
+Bộ cộng bán phần.
+
+2. Scope
+Cộng tổ hợp hai bit, không carry-in.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+a,b: input 1 bit.
+sum,cout: output 1 bit.
+
+Quy tắc hoạt động:
+sum=a XOR b; cout=a AND b.
+
+4. Dataflow
+a,b đi vào XOR tạo sum và AND tạo cout.
+
+5. Test plan
+- Duyệt đủ 4 tổ hợp a,b.

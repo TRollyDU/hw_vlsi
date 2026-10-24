@@ -1,0 +1,23 @@
+Bài 13: Bộ cộng toàn phần
+Module: full_adder
+
+1. Overview
+Bộ cộng toàn phần.
+
+2. Scope
+Cộng tổ hợp hai bit và carry-in.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+a,b,cin: input 1 bit.
+sum,cout: output 1 bit.
+
+Quy tắc hoạt động:
+sum=a XOR b XOR cin; cout=(a AND b) OR ((a XOR b) AND cin).
+
+4. Dataflow
+a,b tạo propagate/generate; cin kết hợp để tạo sum và cout.
+
+5. Test plan
+- Duyệt đủ 8 tổ hợp a,b,cin.

@@ -1,0 +1,30 @@
+Bài 30: Tạo tick 1 Hz từ clock 50 MHz
+Module: tick1hz_50m
+
+1. Overview
+Tạo tick 1 Hz từ clock 50 MHz.
+
+2. Scope
+Xung cho phép 1 chu kỳ clock, không phải clock duty cycle 50%; reset bất đồng bộ mức cao.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst: input 1 bit; clk mặc định 50 MHz.
+tick: output 1 bit.
+
+Quy tắc hoạt động:
+Parameter integer CLOCK_HZ=50000000, miền hợp lệ 1..2147483647.
+rst=1 xóa counter và tick. Khi bỏ reset, tick=1 ở mỗi cạnh lên thứ
+CLOCK_HZ, 2*CLOCK_HZ,..., còn lại tick=0. Với CLOCK_HZ>1, độ rộng tick là
+một chu kỳ clock; CLOCK_HZ=1 thì tick luôn 1 sau cạnh lên đầu tiên.
+Counter nội bộ là integer 32 bit; với clock nguồn CLOCK_HZ Hz có tick 1 Hz.
+
+4. Dataflow
+Counter đếm tới CLOCK_HZ-1 rồi về 0; điều kiện terminal-count được chốt thành tick.
+
+5. Test plan
+- Dùng CLOCK_HZ=5 để kiểm tra khoảng cách tick và độ rộng xung.
+- Dùng CLOCK_HZ=1 để kiểm tra giá trị parameter biên.
+- Reset giữa chu kỳ và kiểm tra khởi động lại.
+- TB rút ngắn chu kỳ bằng parameter, không chạy đủ 50 triệu cạnh mặc định.

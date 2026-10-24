@@ -1,0 +1,23 @@
+Bài 08: Bộ so sánh 4 bit
+Module: cmp4
+
+1. Overview
+Bộ so sánh 4 bit.
+
+2. Scope
+So sánh tổ hợp hai số không dấu.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+a,b: input [3:0].
+gt,eq,lt: output 1 bit, lớn hơn/bằng/nhỏ hơn.
+
+Quy tắc hoạt động:
+gt=(a>b), eq=(a==b), lt=(a<b). Với đầu vào hợp lệ, đúng một đầu ra bằng 1.
+
+4. Dataflow
+a,b đi vào ba phép so sánh để tạo gt,eq,lt.
+
+5. Test plan
+- Duyệt đủ 256 cặp a,b.

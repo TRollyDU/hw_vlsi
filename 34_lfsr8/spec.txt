@@ -1,0 +1,29 @@
+Bài 34: Bộ tạo số giả ngẫu nhiên LFSR 8 bit
+Module: lfsr8
+
+1. Overview
+Bộ tạo số giả ngẫu nhiên LFSR 8 bit.
+
+2. Scope
+Fibonacci LFSR 8 bit, cạnh lên clk, reset bất đồng bộ mức cao; có enable.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst,en: input 1 bit.
+q: output [7:0], trạng thái LFSR.
+
+Quy tắc hoạt động:
+Parameter SEED[7:0]=8'h01; seed phải khác 0.
+rst=1 nạp SEED. Khi rst=0,en=1 tại cạnh lên:
+q_next={q[6:0],q[7] XOR q[5] XOR q[4] XOR q[3]}.
+Đa thức x^8+x^6+x^5+x^4+1, chu kỳ 255 trạng thái khác 0.
+en=0 giữ q. Seed=0 nằm ngoài phạm vi hỗ trợ; không có chức năng mật mã.
+
+4. Dataflow
+Các tap q[7],q[5],q[4],q[3] qua XOR tạo bit mới ở bit 0; q cũ dịch về MSB.
+
+5. Test plan
+- Kiểm tra 8 giá trị đầu từ seed mặc định bằng bảng độc lập.
+- Duyệt một chu kỳ, kiểm tra trạng thái khác 0 và không trùng lặp.
+- Kiểm tra quay về seed, giữ enable thấp và reset khi disable.

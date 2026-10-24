@@ -1,0 +1,25 @@
+Bài 28: Bộ đếm lên/xuống 4 bit
+Module: cnt_updn4
+
+1. Overview
+Bộ đếm lên/xuống 4 bit.
+
+2. Scope
+Cạnh lên clk, reset bất đồng bộ mức cao; đếm modulo 16.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst,en,up: input 1 bit; up=1 đếm lên, up=0 đếm xuống.
+q: output [3:0].
+
+Quy tắc hoạt động:
+rst=1 xóa q. Tại cạnh lên khi rst=0,en=1: up=1 tăng 1, up=0 giảm 1. en=0 giữ. Biên 15->0 khi lên, 0->15 khi xuống.
+
+4. Dataflow
+up chọn bộ tăng/giảm; en cho phép ghi vào thanh ghi q.
+
+5. Test plan
+- Đếm xuống từ 0 qua biên.
+- Đổi hướng để đếm lên qua 15.
+- Giữ enable thấp và reset khi đang đếm.

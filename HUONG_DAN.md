@@ -37,23 +37,24 @@ git push -u origin main
 
 ## 2. Người nộp bài: Quy tắc nộp file
 
-Chọn một thư mục đã tạo sẵn, ví dụ `14_rca4`. Kết quả cần có đúng **2 file**:
+Chọn một thư mục đã tạo sẵn, ví dụ `14_rca4`. Kết quả cần có đúng **3 file**:
 
 ```text
 14_rca4/
 ├── spec.txt
-└── rca4.v
+├── rca4.v
+└── tb_rca4.v
 ```
 
 - **Không** upload nguyên folder `14_rca4` vào bên trong `14_rca4` (tránh `14_rca4/14_rca4/`).
 - **Không** đổi tên thư mục hoặc đổi tên bài khác.
-- **Xóa `.gitkeep`** khi đã thêm đủ hai file (Git chỉ cần `.gitkeep` để giữ thư mục rỗng ban đầu).
-- Nếu bài đang có `spec.txt` và `.v`, hãy cập nhật đúng hai file, không tạo thêm các bản `final.v`, `fixed.v`, `v2.v`.
+- **Xóa `.gitkeep`** khi đã thêm đủ ba file (Git chỉ cần `.gitkeep` để giữ thư mục rỗng ban đầu).
+- Cập nhật `spec.txt`, RTL và testbench tương ứng; không tạo thêm các bản `final.v`, `fixed.v`, `v2.v`.
 - Không upload file nhị phân build, `.vcd`, `.out`, ảnh mô phỏng hoặc tài khoản/mật khẩu.
 
 ### Mẫu nội dung `spec.txt`
 
-Có thể copy từ [`templates/spec_template.txt`](templates/spec_template.txt). Điền ít nhất:
+Có thể copy từ [`templates/spec_template.txt`](templates/spec_template.txt). Spec cần có Overview, Scope, Functional spec (I/O và Blocks nếu có nhiều khối), Dataflow, Test plan. Test plan chỉ liệt kê test, không ghi expected. Ví dụ rút gọn:
 
 ```text
 Ten bai: 14 - Bo cong 4 bit ripple-carry
@@ -74,7 +75,7 @@ Kiem thu: 0+0, 15+1, 15+15+1, cac truong hop carry.
 
 1. Đăng nhập GitHub và mở repository do người quản lý cung cấp.
 2. Bấm vào **thư mục bài** (ví dụ `14_rca4/`).
-3. Bấm **Add file → Upload files**; kéo thả **hai file** `spec.txt` và `rca4.v` vào trang. Đảm bảo đang upload ở **đường dẫn `14_rca4/`**.
+3. Bấm **Add file → Upload files**; kéo thả **ba file** `spec.txt`, `rca4.v` và `tb_rca4.v` vào trang. Đảm bảo đang upload ở **đường dẫn `14_rca4/`**.
 4. Nhập commit message, ví dụ `Add exercise 14 ripple-carry adder`.
 5. Chọn **Create a new branch for this commit and start a pull request** thay vì commit thẳng vào `main`. Đặt branch ví dụ `submit-14-rca4`.
 6. Bấm **Propose changes**, tiếp theo **Create pull request** (tên nút có thể thay đổi nhẹ).
@@ -106,7 +107,7 @@ git pull origin main
 git switch -c submit-14-rca4
 ```
 
-Giờ mở thư mục `14_rca4/` trên máy và thêm `spec.txt`, `rca4.v`, xóa `.gitkeep`. Rồi chạy:
+Giờ mở thư mục `14_rca4/` trên máy và thêm `spec.txt`, `rca4.v`, `tb_rca4.v`, xóa `.gitkeep`. Rồi chạy:
 
 ```bash
 git status                       # Xem file mới, file thay đổi, file đã xóa
@@ -140,9 +141,9 @@ Cuối cùng, mở link repo trên GitHub → **Compare & pull request** → mô
 
 1. Vào tab **Pull requests** của repository.
 2. Mở PR, xem tab **Files changed**.
-3. Xác minh chỉ một thư mục bài được cập nhật; đã có `spec.txt` và file `.v` đúng tên; đã xóa `.gitkeep`; `spec.txt` nêu đủ chức năng, I/O.
+3. Xác minh chỉ một thư mục bài được cập nhật; đã có `spec.txt`, RTL và testbench đúng tên; đã xóa `.gitkeep`; `spec.txt` nêu đủ chức năng, I/O.
 4. Nếu ổn, chọn **Merge pull request**. Nếu chưa ổn, comment để người nộp chỉnh sửa trên branch cũ.
-5. Sau merge, thư mục trên `main` sẽ có đúng hai file bài tập. Không cần tạo thư mục khác.
+5. Sau merge, thư mục trên `main` sẽ có đúng ba file bài tập. Không cần tạo thư mục khác.
 
 ## 6. Nguồn tham khảo GitHub chính thức
 

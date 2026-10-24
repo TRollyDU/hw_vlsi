@@ -1,0 +1,29 @@
+Bài 33: FSM đèn giao thông đỏ/xanh
+Module: fsm_traffic
+
+1. Overview
+FSM đèn giao thông đỏ/xanh.
+
+2. Scope
+Đúng 2 trạng thái, không đèn vàng, không counter thời gian nội bộ.
+RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+
+3. Functional spec
+I/O pins:
+clk,rst,tick: input 1 bit.
+red,green: output 1 bit, mức 1 bật đèn.
+
+Quy tắc hoạt động:
+Cạnh lên clk, reset bất đồng bộ mức cao. rst=1 về RED.
+Khi rst=0: tick=0 giữ trạng thái; tick=1 đổi RED->GREEN hoặc GREEN->RED
+tại cạnh lên. Nếu tick giữ 1 nhiều chu kỳ thì đổi mỗi cạnh lên.
+RED: red=1,green=0; GREEN: red=0,green=1. Ưu tiên rst cao hơn tick.
+
+4. Dataflow
+tick cho phép đảo thanh ghi state 1 bit; state được giải mã trực tiếp thành red và green.
+
+5. Test plan
+- Reset ban đầu và reset khi đang xanh.
+- Giữ tick=0 ở cả hai trạng thái.
+- Tick rời rạc và tick liên tiếp.
+- Kiểm tra hai đầu ra cùng mỗi cạnh.
