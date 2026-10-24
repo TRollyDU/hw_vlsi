@@ -6,12 +6,16 @@ Bộ cộng toàn phần.
 
 2. Scope
 Cộng tổ hợp hai bit và carry-in.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-a,b,cin: input 1 bit.
-sum,cout: output 1 bit.
+| Name | Bitwidth | Description |
+| a | 1 | Input: Bit cộng A. |
+| b | 1 | Input: Bit cộng B. |
+| cin | 1 | Input: Carry-in của phép cộng. |
+| sum | 1 | Output: Các bit tổng của phép cộng. |
+| cout | 1 | Output: Carry-out của phép cộng. |
 
 Quy tắc hoạt động:
 sum=a XOR b XOR cin; cout=(a AND b) OR ((a XOR b) AND cin).

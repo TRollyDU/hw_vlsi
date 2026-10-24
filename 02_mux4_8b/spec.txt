@@ -6,13 +6,17 @@ Bộ dồn kênh 4:1 dữ liệu 8 bit.
 
 2. Scope
 Mạch tổ hợp, dữ liệu không dấu.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-d0,d1,d2,d3: input [7:0], bốn dữ liệu.
-sel: input [1:0], chọn kênh.
-y: output [7:0], dữ liệu được chọn.
+| Name | Bitwidth | Description |
+| d0 | 8 | Input: Dữ liệu của kênh 0. |
+| d1 | 8 | Input: Dữ liệu của kênh 1. |
+| d2 | 8 | Input: Dữ liệu của kênh 2. |
+| d3 | 8 | Input: Dữ liệu của kênh 3. |
+| sel | 2 | Input: Chỉ số kênh cần chọn, từ 0 đến 3. |
+| y | 8 | Output: Dữ liệu của kênh được chọn. |
 
 Quy tắc hoạt động:
 sel=0/1/2/3 chọn d0/d1/d2/d3 tương ứng.

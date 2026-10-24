@@ -6,14 +6,15 @@ Bộ quay vòng 8 bit.
 
 2. Scope
 Tổ hợp, quay vòng trái/phải; không phải dịch chèn 0.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-d: input [7:0].
-shamt: input [2:0], số vị trí 0..7.
-right: input 1 bit, 1 quay phải, 0 quay trái.
-y: output [7:0].
+| Name | Bitwidth | Description |
+| d | 8 | Input: Dữ liệu cần quay vòng. |
+| shamt | 3 | Input: Số vị trí quay, từ 0 đến 7. |
+| right | 1 | Input: Bằng 1 quay phải; bằng 0 quay trái. |
+| y | 8 | Output: Dữ liệu sau khi quay vòng. |
 
 Quy tắc hoạt động:
 Quay d theo hướng right và số vị trí shamt; các bit vượt biên quay về đầu kia; shamt=0 giữ d.

@@ -6,14 +6,16 @@ Bộ trừ 4 bit.
 
 2. Scope
 Trừ tổ hợp hai số không dấu, có borrow-in và borrow-out.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-a,b: input [3:0].
-bin: input 1 bit, mượn vào.
-diff: output [3:0].
-bout: output 1 bit, mượn ra.
+| Name | Bitwidth | Description |
+| a | 4 | Input: Toán hạng A không dấu. |
+| b | 4 | Input: Toán hạng B không dấu. |
+| bin | 1 | Input: Borrow-in của phép trừ. |
+| diff | 4 | Output: Hiệu 4 bit thấp của a-b-bin. |
+| bout | 1 | Output: Borrow-out; bằng 1 khi a nhỏ hơn b+bin. |
 
 Quy tắc hoạt động:
 diff=(a-b-bin) modulo 16. bout=1 khi a < b+bin. Không có cờ overflow có dấu.

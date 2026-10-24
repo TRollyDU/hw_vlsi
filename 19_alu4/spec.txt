@@ -6,14 +6,17 @@ ALU 4 bit.
 
 2. Scope
 Tám phép toán tổ hợp trên số không dấu; dịch logic cố định 1 bit.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-a,b: input [3:0].
-op: input [2:0], mã phép toán.
-y: output [3:0].
-carry_borrow,zero: output 1 bit.
+| Name | Bitwidth | Description |
+| a | 4 | Input: Toán hạng A không dấu. |
+| b | 4 | Input: Toán hạng B không dấu. |
+| op | 3 | Input: Mã chọn một trong tám phép toán. |
+| y | 4 | Output: Kết quả ALU 4 bit. |
+| carry_borrow | 1 | Output: Carry khi cộng, borrow khi trừ; bằng 0 với các phép khác. |
+| zero | 1 | Output: Bằng 1 khi kết quả y bằng 0. |
 
 Quy tắc hoạt động:
 op=000: a+b; 001: a-b; 010: a AND b; 011: a OR b;

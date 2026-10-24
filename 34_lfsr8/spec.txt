@@ -6,12 +6,15 @@ Bộ tạo số giả ngẫu nhiên LFSR 8 bit.
 
 2. Scope
 Fibonacci LFSR 8 bit, cạnh lên clk, reset bất đồng bộ mức cao; có enable.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,rst,en: input 1 bit.
-q: output [7:0], trạng thái LFSR.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| en | 1 | Input: Cho phép cập nhật khi bằng 1; bằng 0 giữ giá trị. |
+| q | 8 | Output: Trạng thái và dữ liệu giả ngẫu nhiên của LFSR 8 bit. |
 
 Quy tắc hoạt động:
 Parameter SEED[7:0]=8'h01; seed phải khác 0.

@@ -6,12 +6,16 @@ JK flip-flop.
 
 2. Scope
 Cạnh lên clk, reset bất đồng bộ mức cao.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,rst,j,k: input 1 bit.
-q: output 1 bit.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| j | 1 | Input: Ngõ J; kết hợp với k để chọn giữ, xóa, đặt hoặc đảo. |
+| k | 1 | Input: Ngõ K; kết hợp với j theo bảng chức năng JK. |
+| q | 1 | Output: Giá trị lưu trong phần tử nhớ hoặc thanh ghi. |
 
 Quy tắc hoạt động:
 rst=1 xóa q; nếu không reset, tại cạnh lên: JK=00 giữ, 01 xóa, 10 đặt, 11 đảo q.

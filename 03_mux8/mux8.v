@@ -1,3 +1,9 @@
-module mux8(input [7:0] d, input [2:0] sel, output y);
-assign y = d[sel];
+module mux8 (
+    input [7:0] d,
+    input [2:0] sel,
+    output y
+);
+
+    assign y = d[sel];
+
 endmodule

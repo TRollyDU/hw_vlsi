@@ -6,19 +6,21 @@ Tạo tick 1 Hz từ clock 50 MHz.
 
 2. Scope
 Xung cho phép 1 chu kỳ clock, không phải clock duty cycle 50%; reset bất đồng bộ mức cao.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,rst: input 1 bit; clk mặc định 50 MHz.
-tick: output 1 bit.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| tick | 1 | Output: Xung tick được đăng ký, lặp sau CLOCK_HZ chu kỳ clock. |
 
 Quy tắc hoạt động:
-Parameter integer CLOCK_HZ=50000000, miền hợp lệ 1..2147483647.
+Parameter [25:0] CLOCK_HZ=26'd50000000, miền hợp lệ 1..67108863.
 rst=1 xóa counter và tick. Khi bỏ reset, tick=1 ở mỗi cạnh lên thứ
 CLOCK_HZ, 2*CLOCK_HZ,..., còn lại tick=0. Với CLOCK_HZ>1, độ rộng tick là
 một chu kỳ clock; CLOCK_HZ=1 thì tick luôn 1 sau cạnh lên đầu tiên.
-Counter nội bộ là integer 32 bit; với clock nguồn CLOCK_HZ Hz có tick 1 Hz.
+Counter nội bộ là reg [25:0], không dùng integer; với clock nguồn CLOCK_HZ Hz có tick 1 Hz.
 
 4. Dataflow
 Counter đếm tới CLOCK_HZ-1 rồi về 0; điều kiện terminal-count được chốt thành tick.

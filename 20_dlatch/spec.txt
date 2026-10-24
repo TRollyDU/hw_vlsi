@@ -6,12 +6,15 @@ D latch.
 
 2. Scope
 Latch nhạy mức en, reset bất đồng bộ mức cao.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-d,en,rst: input 1 bit.
-q: output 1 bit.
+| Name | Bitwidth | Description |
+| d | 1 | Input: Dữ liệu đưa vào phần tử nhớ hoặc thanh ghi. |
+| en | 1 | Input: Mức 1 mở latch để q theo d; mức 0 giữ q. |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| q | 1 | Output: Giá trị lưu trong phần tử nhớ hoặc thanh ghi. |
 
 Quy tắc hoạt động:
 Ưu tiên rst > en. rst=1 đặt q=0; rst=0,en=1 cho q theo d; en=0 giữ q.

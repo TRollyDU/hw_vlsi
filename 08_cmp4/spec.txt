@@ -6,12 +6,16 @@ Bộ so sánh 4 bit.
 
 2. Scope
 So sánh tổ hợp hai số không dấu.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-a,b: input [3:0].
-gt,eq,lt: output 1 bit, lớn hơn/bằng/nhỏ hơn.
+| Name | Bitwidth | Description |
+| a | 4 | Input: Toán hạng A không dấu. |
+| b | 4 | Input: Toán hạng B không dấu. |
+| gt | 1 | Output: Bằng 1 khi a lớn hơn b. |
+| eq | 1 | Output: Bằng 1 khi a bằng b. |
+| lt | 1 | Output: Bằng 1 khi a nhỏ hơn b. |
 
 Quy tắc hoạt động:
 gt=(a>b), eq=(a==b), lt=(a<b). Với đầu vào hợp lệ, đúng một đầu ra bằng 1.

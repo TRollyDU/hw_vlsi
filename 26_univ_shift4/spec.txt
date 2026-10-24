@@ -6,15 +6,18 @@ Thanh ghi dịch đa năng 4 bit.
 
 2. Scope
 Cạnh lên clk, reset bất đồng bộ mức cao.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,rst: input 1 bit.
-mode: input [1:0].
-d: input [3:0], dữ liệu nạp song song.
-sl,sr: input 1 bit, bit nối tiếp cho dịch trái/phải.
-q: output [3:0].
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| mode | 2 | Input: Chọn giữ, dịch phải, dịch trái hoặc nạp song song. |
+| d | 4 | Input: Dữ liệu nạp song song khi mode=11. |
+| sl | 1 | Input: Bit nối tiếp đưa vào q[0] khi dịch trái. |
+| sr | 1 | Input: Bit nối tiếp đưa vào q[3] khi dịch phải. |
+| q | 4 | Output: Giá trị lưu trong phần tử nhớ hoặc thanh ghi. |
 
 Quy tắc hoạt động:
 rst=1 xóa q. Khi rst=0 tại cạnh lên: mode=00 giữ;

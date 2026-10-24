@@ -6,14 +6,16 @@ Bộ cộng/trừ 4 bit.
 
 2. Scope
 Tổ hợp, phép cộng/trừ không dấu, không carry-in ngoài.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-a,b: input [3:0].
-sub: input 1 bit, 0 cộng, 1 trừ.
-result: output [3:0].
-carry_borrow: output 1 bit.
+| Name | Bitwidth | Description |
+| a | 4 | Input: Toán hạng A không dấu. |
+| b | 4 | Input: Toán hạng B không dấu. |
+| sub | 1 | Input: Bằng 0 cộng; bằng 1 trừ. |
+| result | 4 | Output: Kết quả 4 bit thấp. |
+| carry_borrow | 1 | Output: Carry-out khi cộng; borrow-out khi trừ. |
 
 Quy tắc hoạt động:
 sub=0: result=(a+b) modulo 16, carry_borrow là carry-out.

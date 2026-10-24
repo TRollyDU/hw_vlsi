@@ -9,8 +9,13 @@ Phạm vi, độ rộng, miền dữ liệu, giới hạn và giả định.
 
 3. Functional spec
 Blocks: chỉ liệt kê khi có nhiều khối chức năng.
-I/O pins: tên, hướng, độ rộng và ý nghĩa.
+I/O pins:
+| Name | Bitwidth | Description |
+| tên tín hiệu | số bit | Input/Output: ý nghĩa tín hiệu. |
+
+Mỗi tín hiệu có một dòng riêng.
 Quy tắc hoạt động, clock/reset/enable, thứ tự ưu tiên, parameter và giá trị biên.
+Nếu có clock: mặc định 50 MHz, chu kỳ 20 ns. Bộ đếm RTL dùng reg có độ rộng bit cụ thể.
 
 4. Dataflow
 Đường đi của dữ liệu từ đầu vào qua logic/thanh ghi tới đầu ra.

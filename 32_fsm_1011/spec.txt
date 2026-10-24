@@ -6,7 +6,7 @@ FSM phát hiện chuỗi 1011.
 
 2. Scope
 Mealy 4 trạng thái prefix, đầu ra detect được đăng ký; cho phép chồng lặp.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 Blocks:
@@ -15,8 +15,11 @@ Blocks:
 - Thanh ghi xung detect.
 
 I/O pins:
-clk,rst,din: input 1 bit.
-detect: output 1 bit, xung nhận dạng.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| din | 1 | Input: Bit nối tiếp được lấy mẫu tại mỗi cạnh lên. |
+| detect | 1 | Output: Xung nhận dạng khi vừa nhận đủ chuỗi 1011. |
 
 Quy tắc hoạt động:
 rst bất đồng bộ mức 1: state=S0, detect=0. Mỗi cạnh lên lấy một bit din.

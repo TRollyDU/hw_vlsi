@@ -6,7 +6,7 @@ D flip-flop reset đồng bộ và bất đồng bộ.
 
 2. Scope
 Hai flip-flop độc lập cùng nhận d,clk,rst; reset mức cao, cạnh lên clk.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 Blocks:
@@ -14,8 +14,12 @@ Blocks:
 - Flip-flop reset bất đồng bộ.
 
 I/O pins:
-clk,rst,d: input 1 bit.
-q_sync,q_async: output 1 bit.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset mức cao; tác động đồng bộ lên q_sync và bất đồng bộ lên q_async. |
+| d | 1 | Input: Dữ liệu đưa vào phần tử nhớ hoặc thanh ghi. |
+| q_sync | 1 | Output: Đầu ra flip-flop có reset đồng bộ. |
+| q_async | 1 | Output: Đầu ra flip-flop có reset bất đồng bộ. |
 
 Quy tắc hoạt động:
 q_sync: tại cạnh lên clk, rst=1 xóa q_sync, rst=0 lấy d.

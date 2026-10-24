@@ -6,18 +6,27 @@ Bộ nhân 4 x 4 bit.
 
 2. Scope
 Nhân tổ hợp hai số không dấu, giữ đủ tích 8 bit.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
+Blocks:
+- Tạo bốn tích riêng 8 bit bằng chọn dữ liệu và dịch trái.
+- Mạng cộng các tích riêng.
+
 I/O pins:
-a,b: input [3:0].
-product: output [7:0].
+| Name | Bitwidth | Description |
+| a | 4 | Input: Toán hạng A không dấu. |
+| b | 4 | Input: Toán hạng B không dấu. |
+| product | 8 | Output: Tích đầy đủ 8 bit của a và b. |
 
 Quy tắc hoạt động:
-product=a*b; miền tích 0..225.
+Mỗi b[k] chọn a hoặc 0, mở rộng 8 bit và dịch trái k vị trí, k=0..3.
+Cộng bốn tích riêng để tạo product; miền tích 0..225. RTL không dùng toán tử nhân.
 
 4. Dataflow
-a,b đi vào bộ nhân tổ hợp tới product.
+a mở rộng thành 8 bit; b[0..3] điều khiển bốn tích riêng pp0..pp3.
+pp0 không dịch, pp1/pp2/pp3 dịch trái 1/2/3 vị trí.
+Mạng cộng (pp0+pp1)+(pp2+pp3) đưa tích đầy đủ ra product.
 
 5. Test plan
 - Duyệt đủ 256 cặp a,b.

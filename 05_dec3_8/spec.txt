@@ -6,12 +6,13 @@ Bộ giải mã 3–8.
 
 2. Scope
 Tổ hợp, ngõ ra one-hot active-high, không enable.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-a: input [2:0], địa chỉ nhị phân.
-y: output [7:0], các đường giải mã.
+| Name | Bitwidth | Description |
+| a | 3 | Input: Địa chỉ nhị phân 3 bit. |
+| y | 8 | Output: Các ngõ ra giải mã one-hot, active-high. |
 
 Quy tắc hoạt động:
 Chỉ y[a]=1, các bit còn lại bằng 0.

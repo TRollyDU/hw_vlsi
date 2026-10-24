@@ -6,13 +6,17 @@ Bộ đếm lên 4 bit có nạp.
 
 2. Scope
 Cạnh lên clk, reset bất đồng bộ mức cao; đếm modulo 16.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,rst,en,load: input 1 bit.
-d: input [3:0], dữ liệu nạp.
-q: output [3:0], giá trị đếm.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| en | 1 | Input: Cho phép cập nhật khi bằng 1; bằng 0 giữ giá trị. |
+| load | 1 | Input: Cho phép nạp d, ưu tiên cao hơn en. |
+| d | 4 | Input: Giá trị nạp song song. |
+| q | 4 | Output: Giá trị bộ đếm lên modulo 16. |
 
 Quy tắc hoạt động:
 Ưu tiên rst > load > en. rst=1 xóa q ngay.

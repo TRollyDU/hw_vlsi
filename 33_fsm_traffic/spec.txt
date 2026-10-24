@@ -6,12 +6,16 @@ FSM đèn giao thông đỏ/xanh.
 
 2. Scope
 Đúng 2 trạng thái, không đèn vàng, không counter thời gian nội bộ.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,rst,tick: input 1 bit.
-red,green: output 1 bit, mức 1 bật đèn.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| tick | 1 | Input: Cho phép đổi giữa trạng thái đỏ và xanh tại cạnh lên. |
+| red | 1 | Output: Bằng 1 bật đèn đỏ. |
+| green | 1 | Output: Bằng 1 bật đèn xanh. |
 
 Quy tắc hoạt động:
 Cạnh lên clk, reset bất đồng bộ mức cao. rst=1 về RED.

@@ -6,17 +6,19 @@ Bộ cộng ripple-carry 4 bit.
 
 2. Scope
 Cộng tổ hợp hai số 4 bit không dấu có carry-in.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 Blocks:
 - Bốn tầng cộng 1 bit, nối tiếp đường carry từ bit 0 tới bit 3.
 
 I/O pins:
-a,b: input [3:0].
-cin: input 1 bit.
-sum: output [3:0].
-cout: output 1 bit.
+| Name | Bitwidth | Description |
+| a | 4 | Input: Toán hạng A không dấu. |
+| b | 4 | Input: Toán hạng B không dấu. |
+| cin | 1 | Input: Carry-in của phép cộng. |
+| sum | 4 | Output: Các bit tổng của phép cộng. |
+| cout | 1 | Output: Carry-out của phép cộng. |
 
 Quy tắc hoạt động:
 {cout,sum}=a+b+cin. p=a XOR b, g=a AND b; bỏ qua diễn giải tràn số có dấu.

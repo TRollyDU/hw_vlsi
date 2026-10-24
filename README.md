@@ -17,9 +17,11 @@ Repository này gồm **35 bài tập Verilog**, tương ứng với 35 mục tr
 
 > **Quan trọng:** Mỗi thư mục bài chỉ giữ 3 file trên, không giữ `.gitkeep`, waveform hay file build. Không đổi tên các thư mục đã có.
 
-RTL dùng Verilog-2001. Quy ước I/O, clock/reset, parameter và test plan được ghi trong `spec.txt` từng bài. Testbench dài 22–41 dòng; với mạch dùng clock, dữ liệu được đổi trước cạnh lấy mẫu và kiểm tra sau khi RTL cập nhật. Bài 33 dùng đúng hai trạng thái đỏ/xanh, đổi theo `tick`.
+Quy ước I/O, clock/reset, parameter và test plan được ghi trong `spec.txt` từng bài. Bảng I/O dùng ba cột Name, Bitwidth, Description; mỗi tín hiệu có một dòng riêng. RTL và testbench tách riêng từng khai báo, kết nối và lệnh; khối tổ hợp dùng `always @(*)`. Với mạch dùng clock, dữ liệu được đổi trước cạnh lấy mẫu và kiểm tra sau khi RTL cập nhật. Bài 33 dùng đúng hai trạng thái đỏ/xanh, đổi theo `tick`.
 
-Đợt mô phỏng dùng Vivado xsim chỉ chạy bài 27–35; bài 1–26 có testbench nhưng không chạy mô phỏng. Bài 29–30 dùng parameter nhỏ trong testbench để rút ngắn thời gian. Mặc định bài 30 vẫn tạo một tick mỗi 50.000.000 chu kỳ clock.
+Clock đầu vào mặc định 50 MHz (chu kỳ 20 ns); testbench dùng `always #10` với timescale 1ns/1ps. Bộ đếm RTL dùng `reg` có độ rộng cụ thể, không dùng `integer`. Hằng dữ liệu ghi rõ kích thước và cơ số, ví dụ `1'b0`, `4'd0`, `26'd50000000`; giới hạn vector, chỉ số bit và độ trễ giữ cú pháp số thông thường. Nhánh `case` có một lệnh được viết cùng dòng với nhãn. Bộ nhân 4×4 dùng các tích riêng dịch trái và mạng cộng.
+
+Đợt mô phỏng dùng Vivado xsim chạy bài 27–35 và kiểm tra thêm các khối tổ hợp được thay đổi hoặc có nhiều phép toán. Bài 29–30 dùng parameter nhỏ trong testbench để rút ngắn thời gian. Mặc định bài 30 vẫn tạo một tick mỗi 50.000.000 chu kỳ clock.
 
 📘 **Đọc [HUONG_DAN.md](HUONG_DAN.md) trước khi đóng góp** — có hướng dẫn từng bước cho người mới bằng giao diện GitHub và Git Bash, kể cả `add`, `commit`, `push`, Pull Request.
 

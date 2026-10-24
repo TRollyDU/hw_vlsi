@@ -6,12 +6,16 @@ Bộ đếm BCD 00–59.
 
 2. Scope
 Cạnh lên clk; tick là clock-enable, reset bất đồng bộ mức cao.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,rst,tick: input 1 bit.
-tens,ones: output [3:0], chữ số hàng chục/hàng đơn vị.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| tick | 1 | Input: Cho phép tăng bộ đếm tại cạnh lên khi bằng 1. |
+| tens | 4 | Output: Chữ số BCD hàng chục, từ 0 đến 5. |
+| ones | 4 | Output: Chữ số BCD hàng đơn vị, từ 0 đến 9. |
 
 Quy tắc hoạt động:
 rst=1 đặt 00. Mỗi cạnh lên với tick=1 tăng một đơn vị BCD; 09 sang 10; 59 sang 00. tick=0 giữ. Không nhận dữ liệu nạp ngoài.

@@ -6,12 +6,20 @@ Các cổng logic cơ bản.
 
 2. Scope
 Mạch tổ hợp 1 bit, không clock/reset.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-a, b: input 1 bit, hai toán hạng.
-y_and, y_or, y_xor, y_nand, y_nor, y_xnor, y_not: output 1 bit.
+| Name | Bitwidth | Description |
+| a | 1 | Input: Tín hiệu logic A. |
+| b | 1 | Input: Tín hiệu logic B. |
+| y_and | 1 | Output: Kết quả AND của a và b. |
+| y_or | 1 | Output: Kết quả OR của a và b. |
+| y_xor | 1 | Output: Kết quả XOR của a và b. |
+| y_nand | 1 | Output: Kết quả NAND của a và b. |
+| y_nor | 1 | Output: Kết quả NOR của a và b. |
+| y_xnor | 1 | Output: Kết quả XNOR của a và b. |
+| y_not | 1 | Output: Kết quả đảo của a. |
 
 Quy tắc hoạt động:
 y_and=a&b; y_or=a|b; y_xor=a^b; y_nand=~(a&b);

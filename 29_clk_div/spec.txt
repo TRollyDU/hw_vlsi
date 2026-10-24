@@ -6,7 +6,7 @@ Bộ chia tần số.
 
 2. Scope
 Clock chia có duty cycle 50%, cạnh lên clock nguồn, reset bất đồng bộ mức cao.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 Blocks:
@@ -14,14 +14,16 @@ Blocks:
 - Flip-flop đảo đầu ra.
 
 I/O pins:
-clk,rst: input 1 bit.
-clk_out: output 1 bit.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| rst | 1 | Input: Reset bất đồng bộ mức cao; ưu tiên cao nhất. |
+| clk_out | 1 | Output: Clock đầu ra có tần số f_clk/(2*HALF_PERIOD). |
 
 Quy tắc hoạt động:
-Parameter integer HALF_PERIOD=2, miền hợp lệ 1..2147483647.
+Parameter [25:0] HALF_PERIOD=26'd2, miền hợp lệ 1..67108863.
 rst=1 đặt bộ đếm và clk_out về 0. Sau khi bỏ reset, cứ HALF_PERIOD
 cạnh lên clk thì đảo clk_out; f_out=f_clk/(2*HALF_PERIOD).
-Không hỗ trợ hệ số chia lẻ. Counter nội bộ là integer 32 bit.
+Không hỗ trợ hệ số chia lẻ. Counter nội bộ là reg [25:0], không dùng integer. Với clock 50 MHz mặc định và HALF_PERIOD=2, clk_out có tần số 12,5 MHz.
 
 4. Dataflow
 Counter đếm 0..HALF_PERIOD-1; so sánh cuối chu kỳ tạo điều kiện đảo flip-flop clk_out.

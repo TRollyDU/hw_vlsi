@@ -6,14 +6,17 @@ RAM đồng bộ 16 x 8 bit.
 
 2. Scope
 RAM một cổng 16 từ x 8 bit; cạnh lên clk; không reset hay khởi tạo bộ nhớ.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Clock mặc định 50 MHz, chu kỳ 20 ns. Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-clk,en,we: input 1 bit, cho phép cổng và cho phép ghi.
-addr: input [3:0], địa chỉ 0..15.
-din: input [7:0], dữ liệu ghi.
-dout: output [7:0], dữ liệu đọc được đăng ký.
+| Name | Bitwidth | Description |
+| clk | 1 | Input: Clock lấy mẫu tại cạnh lên, mặc định 50 MHz (chu kỳ 20 ns). |
+| en | 1 | Input: Cho phép truy cập RAM; bằng 0 giữ dout và không ghi. |
+| we | 1 | Input: Cho phép ghi khi en=1; bằng 0 chọn đọc. |
+| addr | 4 | Input: Địa chỉ ô nhớ, từ 0 đến 15. |
+| din | 8 | Input: Dữ liệu ghi vào RAM. |
+| dout | 8 | Output: Dữ liệu đọc được đăng ký; trả din trong chu kỳ ghi. |
 
 Quy tắc hoạt động:
 Tại cạnh lên nếu en=1,we=1: ghi mem[addr]=din và dout=din (write-first).

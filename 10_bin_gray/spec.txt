@@ -6,12 +6,15 @@ Chuyển đổi nhị phân và Gray 4 bit.
 
 2. Scope
 Hai đường chuyển đổi tổ hợp độc lập, độ rộng cố định 4 bit.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-bin_in,gray_in: input [3:0].
-gray_out,bin_out: output [3:0].
+| Name | Bitwidth | Description |
+| bin_in | 4 | Input: Số nhị phân cần chuyển sang Gray. |
+| gray_in | 4 | Input: Mã Gray cần chuyển sang nhị phân. |
+| gray_out | 4 | Output: Mã Gray chuyển từ bin_in. |
+| bin_out | 4 | Output: Số nhị phân chuyển từ gray_in. |
 
 Quy tắc hoạt động:
 gray_out=bin_in XOR (bin_in>>1).

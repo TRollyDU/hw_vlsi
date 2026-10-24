@@ -6,13 +6,14 @@ Bộ mã hóa ưu tiên 8–3.
 
 2. Scope
 Tổ hợp, bit chỉ số lớn nhất có ưu tiên cao nhất.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-d: input [7:0].
-code: output [2:0], chỉ số bit được chọn.
-valid: output 1 bit, có ít nhất một bit đầu vào bằng 1.
+| Name | Bitwidth | Description |
+| d | 8 | Input: Tám tín hiệu yêu cầu; bit có chỉ số cao được ưu tiên. |
+| code | 3 | Output: Chỉ số bit 1 được ưu tiên; bằng 0 khi không có yêu cầu. |
+| valid | 1 | Output: Bằng 1 khi có ít nhất một bit đầu vào bằng 1. |
 
 Quy tắc hoạt động:
 d=0: valid=0, code=0. Nếu d khác 0: valid=1 và code là chỉ số bit 1 cao nhất.

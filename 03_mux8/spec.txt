@@ -6,13 +6,14 @@ Bộ dồn kênh 8:1.
 
 2. Scope
 Tám ngõ vào 1 bit, tổ hợp.
-RTL Verilog-2001, có thể tổng hợp. Testbench dùng timescale 1ns/1ps.
+Testbench dùng timescale 1ns/1ps.
 
 3. Functional spec
 I/O pins:
-d: input [7:0], d[0] tới d[7] là tám kênh.
-sel: input [2:0], số kênh.
-y: output 1 bit.
+| Name | Bitwidth | Description |
+| d | 8 | Input: Tám kênh dữ liệu 1 bit, từ d[0] đến d[7]. |
+| sel | 3 | Input: Chỉ số kênh cần chọn, từ 0 đến 7. |
+| y | 1 | Output: Bit dữ liệu của kênh được chọn. |
 
 Quy tắc hoạt động:
 y=d[sel].
